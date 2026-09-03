@@ -1,6 +1,19 @@
 import io
 import os
 import zipfile
+
+import importlib.metadata
+
+try:
+    print("OpenCV packages:")
+    for name in ["opencv-python", "opencv-python-headless"]:
+        try:
+            print(name, importlib.metadata.version(name))
+        except importlib.metadata.PackageNotFoundError:
+            print(name, "NOT INSTALLED")
+except Exception as e:
+    print(e)
+
 import cv2
 import mediapipe as mp
 import numpy as np
